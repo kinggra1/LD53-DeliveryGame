@@ -13,14 +13,7 @@ public class PathPiece : MonoBehaviour
         this.startNode = startNode;
         this.endNode = endNode;
         pathSprite.SetActive(true);
-
-        Vector2 startToEnd = endNode.transform.position - startNode.transform.position;
-
-        float distance = startToEnd.magnitude;
-        pathSprite.transform.position = ((Vector2)startNode.transform.position + startToEnd.normalized * distance / 2f);
-        pathSprite.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(startToEnd.y, startToEnd.x));
-
-        pathSprite.transform.localScale = new Vector3(distance, 1f, 1f);
+        RescalePathToEnds();
     }
 
     public PathConnectable StartNode() {
@@ -43,5 +36,15 @@ public class PathPiece : MonoBehaviour
 
     private void Update() {
         Debug.DrawLine(startNode.transform.position, endNode.transform.position, Color.red);
+    }
+
+    public void RescalePathToEnds() {
+        Vector2 startToEnd = endNode.transform.position - startNode.transform.position;
+
+        float distance = startToEnd.magnitude;
+        pathSprite.transform.position = ((Vector2)startNode.transform.position + startToEnd.normalized * distance / 2f);
+        pathSprite.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(startToEnd.y, startToEnd.x));
+
+        pathSprite.transform.localScale = new Vector3(distance, 0.25f, 1f);
     }
 }

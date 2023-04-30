@@ -5,15 +5,21 @@ using TMPro;
 
 public class DeliverySquirrel : MonoBehaviour
 {
+    private static readonly float FOOD_BLOB_FLOAT_DIST = 1.7f;
+
     public TMP_Text heldFoodText;
+    public GameObject foodBlobPrefab;
+    public Transform foodBlobParent;
 
     private PathPiece currentPath;
     private float timeOnPath = 0f;
 
     private float travelSpeed = 6f;
 
-    private int maxFood = 3;
-    private int heldFood = 3;
+    private int maxFood = 8;
+    private int heldFood = 0;
+
+    private List<FoodBlob> foodBlobs = new List<FoodBlob>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +33,8 @@ public class DeliverySquirrel : MonoBehaviour
         if (!GameManager.Instance.IsPlaying()) {
             return;
         }
+
+        UpdateUI();
 
         if (currentPath == null) {
             return;
@@ -47,13 +55,20 @@ public class DeliverySquirrel : MonoBehaviour
     public int TryGetFood(int amount) {
         int finalAmount = Mathf.Min(heldFood, amount);
         heldFood -= finalAmount;
-        UpdateUI();
+        for (int i = 0; i < finalAmount; i++) {
+            Destroy(foodBlobs[i].gameObject);
+        }
+        foodBlobs.RemoveRange(0, finalAmount);
         return finalAmount;
     }
 
     public void PickUpFood(int amount) {
         heldFood += amount;
-        UpdateUI();
+        for (int i = 0; i < amount; i++) {
+            GameObject foodObject = Instantiate(foodBlobPrefab, foodBlobParent);
+            FoodBlob foodBlob = foodObject.GetComponent<FoodBlob>();
+            foodBlobs.Add(foodBlob);
+        }
     }
 
     public int HeldFoodAmount() {
@@ -72,5 +87,11 @@ public class DeliverySquirrel : MonoBehaviour
 
     private void UpdateUI() {
         heldFoodText.text = "I have: " + heldFood;
+
+        for (int i = 0; i < foodBlobs.Count; i++) {
+            float radialProgress = Mathf.PI * 2 * ((float)i / foodBlobs.Count) + Time.time * 2f;
+            Vector2 targetPosition = (Vector2)foodBlobParent.position + new Vector2(Mathf.Cos(radialProgress), Mathf.Sin(radialProgress)) * FOOD_BLOB_FLOAT_DIST;
+            foodBlobs[i].SetTargetPos(targetPosition);
+        }
     }
 }
