@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FireManager : MonoBehaviour
 {
-    private static readonly float MIN_TIME_BETWEEN_FIRES = 10f;
-    private static readonly float MAX_TIME_BETWEEN_FIRES = 20f;
+    private static readonly float MIN_TIME_BETWEEN_FIRES = 30f;
+    private static readonly float MAX_TIME_BETWEEN_FIRES = 40f;
 
     public DeliverySquirrel mainPathFollower;
 

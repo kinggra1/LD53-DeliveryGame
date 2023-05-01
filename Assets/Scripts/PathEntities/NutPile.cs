@@ -6,16 +6,14 @@ public class NutPile : PathConnectable
 {
     public DeliverySquirrel deliverySquirrel;
 
-    // Eventually turn this into a map I guess?
-    private int foodCount = 20;
+    public FoodBlob.FoodColor foodColor = FoodBlob.FoodColor.BLUE;
 
     // Start is called before the first frame update
     void Start()
     {
+        deliverySquirrel = FindObjectOfType<DeliverySquirrel>();
         deliverySquirrel.transform.position = this.transform.position;
         deliverySquirrel.SetCurrentNode(this);
-
-
     }
 
     // Update is called once per frame
@@ -24,13 +22,16 @@ public class NutPile : PathConnectable
         
     }
 
-    public void AddFood(int amount) {
-
-    }
-
     public override void SquirrelArrives(DeliverySquirrel squirrel) {
-        int pickupAmount = Mathf.Max(squirrel.MaxFoodAmount() - squirrel.HeldFoodAmount(), 0);
-        squirrel.PickUpFood(pickupAmount);
+        int pickupAmount = Mathf.Max(squirrel.MaxFoodAmount(foodColor) - squirrel.HeldFoodAmount(foodColor), 0);
+        squirrel.PickUpFood(pickupAmount, foodColor);
     }
-    
+
+    public override void SquirrelLeaves(DeliverySquirrel squirrel) {
+        int pickupAmount = Mathf.Max(squirrel.MaxFoodAmount(foodColor) - squirrel.HeldFoodAmount(foodColor), 0);
+        if (pickupAmount > 0) {
+            squirrel.PickUpFood(pickupAmount, foodColor);
+        }
+    }
+
 }

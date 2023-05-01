@@ -101,6 +101,10 @@ public class ClickManager : Singleton<ClickManager> {
                         break;
                     // Connect second piece if first piece is already selected.
                     } else {
+                        // Don't connect back to ourself.
+                        if (clickedPathNode == firstClickedNode) {
+                            continue;
+                        }
                         AudioManager.Instance.PlaySoftBoop();
                         GameObject pathPieceObj = Instantiate(pathPiecePrefab);
                         PathPiece newPathPiece = pathPieceObj.GetComponent<PathPiece>();

@@ -66,9 +66,9 @@ public class PathPiece : MonoBehaviour
         GameObject fire = Instantiate(firePrefab, this.transform);
         fire.transform.position = GetCenteredPosition();
         fire.transform.localScale = Vector3.zero;
-        LeanTween.scale(fire, Vector3.one * 1.2f, 0.2f).setEaseInCubic()
+        LeanTween.scale(fire, Vector3.one * 2f, 0.2f).setEaseInCubic()
             .setOnComplete(() => {
-                LeanTween.scale(fire, Vector3.one, 0.5f);
+                LeanTween.scale(fire, Vector3.one * 1.3f, 0.5f);
             });
 
         onFire = true;

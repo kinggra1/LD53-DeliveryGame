@@ -36,7 +36,7 @@ public class AudioManager : Singleton<AudioManager> {
     }
 
     public void PlaySlurp() {
-        generalSfxAudioSource.volume = 0.1f;
+        generalSfxAudioSource.volume = 0.3f;
         generalSfxAudioSource.pitch = (Random.Range(0.8f, 1.1f));
         generalSfxAudioSource.PlayOneShot(slurp);
     }
