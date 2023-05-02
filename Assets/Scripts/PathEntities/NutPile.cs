@@ -11,9 +11,14 @@ public class NutPile : PathConnectable
     // Start is called before the first frame update
     void Start()
     {
-        deliverySquirrel = FindObjectOfType<DeliverySquirrel>();
-        deliverySquirrel.transform.position = this.transform.position;
-        deliverySquirrel.SetCurrentNode(this);
+        if (Time.time < 10f) {
+            deliverySquirrel = FindObjectOfType<DeliverySquirrel>();
+            deliverySquirrel.transform.position = this.transform.position;
+            deliverySquirrel.SetCurrentNode(this);
+        }
+
+        this.transform.localScale = Vector3.zero;
+        LeanTween.scale(gameObject, Vector3.one * 0.6f, 2f).setEaseOutSine();
     }
 
     // Update is called once per frame

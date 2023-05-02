@@ -105,21 +105,18 @@ public class ClickManager : Singleton<ClickManager> {
                         if (clickedPathNode == firstClickedNode) {
                             continue;
                         }
-                        AudioManager.Instance.PlaySoftBoop();
-                        GameObject pathPieceObj = Instantiate(pathPiecePrefab);
-                        PathPiece newPathPiece = pathPieceObj.GetComponent<PathPiece>();
-                        newPathPiece.SetEnds(firstClickedNode, clickedPathNode);
 
-                        // BLOCK DISABLED
-                        // Need to adjust follower along the new path if there was already a follower on the outgoign path.
-                        if (firstClickedNode.outgoingPath != null && firstClickedNode.outgoingPath.entityOnPath != null && false) {
-                            IPathFollower pathFollower = firstClickedNode.outgoingPath.entityOnPath;
-                            float timeOnPath = pathFollower.TimeOnPathSegment();
-                            pathFollower.StartOnPath(newPathPiece, timeOnPath);
+                        AudioManager.Instance.PlaySoftBoop();
+
+                        // Simply ignore if we're recreating an existing path (to keep fires in place).
+                        if (clickedPathNode.incomingPath == null || clickedPathNode.incomingPath.StartNode() != firstClickedNode) {
+                            GameObject pathPieceObj = Instantiate(pathPiecePrefab);
+                            PathPiece newPathPiece = pathPieceObj.GetComponent<PathPiece>();
+                            newPathPiece.SetEnds(firstClickedNode, clickedPathNode);
+                            firstClickedNode.ConnectOutgoing(newPathPiece);
+                            clickedPathNode.ConnectIncoming(newPathPiece);
                         }
 
-                        firstClickedNode.ConnectOutgoing(newPathPiece);
-                        clickedPathNode.ConnectIncoming(newPathPiece);
                         firstClickedNode = null;
                         tempPathVisualToMouse.gameObject.SetActive(false);
                         clickHandled = true;

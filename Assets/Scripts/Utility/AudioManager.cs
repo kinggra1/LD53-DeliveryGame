@@ -7,6 +7,8 @@ public class AudioManager : Singleton<AudioManager> {
 
     public AudioClip softBoop;
     public AudioClip harshCutBoop;
+    public AudioClip fireWoosh;
+    public AudioClip wormAppearSound;
 
     public AudioClip slurp;
 
@@ -40,4 +42,17 @@ public class AudioManager : Singleton<AudioManager> {
         generalSfxAudioSource.pitch = (Random.Range(0.8f, 1.1f));
         generalSfxAudioSource.PlayOneShot(slurp);
     }
+
+    public void PlayFireWoosh() {
+        generalSfxAudioSource.volume = 0.6f;
+        generalSfxAudioSource.pitch = (Random.Range(0.8f, 1.1f));
+        generalSfxAudioSource.PlayOneShot(fireWoosh);
+    }
+    public void PlayWormAppearSound() {
+        generalSfxAudioSource.volume = 0.3f;
+        generalSfxAudioSource.pitch = (Random.Range(0.8f, 1.1f));
+        generalSfxAudioSource.PlayOneShot(wormAppearSound);
+    }
 }
+
+

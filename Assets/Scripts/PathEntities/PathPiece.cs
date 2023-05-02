@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PathPiece : MonoBehaviour
 {
+    public GameObject fireToolTip;
+
     [SerializeField]
     private GameObject pathSprite;
     [SerializeField]
@@ -62,9 +64,14 @@ public class PathPiece : MonoBehaviour
         return flammable;
     }
 
-    public void SetOnFire() {
+    public bool IsLeftPath() {
+        return startNode.transform.position.x > endNode.transform.position.x;
+    }
+
+    public void SetOnFire(bool showFireTooltip) {
         GameObject fire = Instantiate(firePrefab, this.transform);
-        fire.transform.position = GetCenteredPosition();
+        Vector2 centeredPos = GetCenteredPosition();
+        fire.transform.position = centeredPos;
         fire.transform.localScale = Vector3.zero;
         LeanTween.scale(fire, Vector3.one * 2f, 0.2f).setEaseInCubic()
             .setOnComplete(() => {
@@ -72,6 +79,12 @@ public class PathPiece : MonoBehaviour
             });
 
         onFire = true;
+
+        if (showFireTooltip) {
+            fireToolTip.SetActive(true);
+            fireToolTip.transform.position = centeredPos + Vector2.up * 2f;
+            LeanTween.delayedCall(4f, () => fireToolTip?.SetActive(false));
+        }
     }
 
     private void Update() {

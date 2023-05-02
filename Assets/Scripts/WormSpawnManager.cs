@@ -5,14 +5,14 @@ using UnityEngine;
 public class WormSpawnManager : Singleton<WormSpawnManager>
 {
     private static readonly float MINIMUM_SPACING = 4f;
-    private static readonly float MAX_SPAWN_DELAY = 45f;
-    private static readonly float MIN_SPAWN_DELAY = 15f;
+    private static readonly float MAX_SPAWN_DELAY = 60f;
+    private static readonly float MIN_SPAWN_DELAY = 25f;
     private static readonly int SPAWN_LOCATION_CANDIDATES = 10;
 
-    private static readonly float TIME_UNTIL_MULTIPLE_FOODS = 60f;
+    private static readonly float TIME_UNTIL_MULTIPLE_FOODS = 120f;
     private bool secondFoodSpawned = false;
 
-    private float maxSpawnXDist = 10f;
+    private float maxSpawnXDist = 11f;
     private float maxSpawnYDist = 5f;
 
     public GameObject wormPrefab;
@@ -26,8 +26,9 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
     private float foodPileTimer = 0f;
 
 
-    private static readonly float MIN_TIME_TO_HUNGER = 5f;
-    private static readonly float MAX_TIME_TO_HUNGER = 30f;
+    private static readonly float MIN_TIME_TO_HUNGER = 10f;
+    private static readonly float MAX_TIME_TO_HUNGER = 20f;
+    private static readonly float EXPERT_MODIFIER = 10f;
 
     private float hungryWormTimer;
     private float timeUntilNextHunger;
@@ -43,8 +44,9 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
         blueFoodPile.transform.position = Vector3.left * 5f;
         allConnectableEntities.Add(blueFoodPile.GetComponent<PathConnectable>());
 
-        CreateWormAt(new Vector2(6f, 0f));
-        CreateWormAt(new Vector2(2f, 4f));
+        CreateWormAt(new Vector2(6f, 0f), false);
+        CreateWormAt(new Vector2(2f, 4f), false);
+        CreateWormAt(new Vector2(2f, -4f), false);
         SetNextSpawnDelay();
     }
 
@@ -67,10 +69,11 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
         if (hungryWormTimer > timeUntilNextHunger) {
             hungryWormTimer = 0f;
 
-            float randomSum = (Random.Range(-1f, 1f) + Random.Range(-1f, 1f) + Random.Range(-1f, 1f)) / 3f;
+            float randomSum = (Random.Range(-1f, 1f) + Random.Range(-1f, 1f)) / 2f;
             float mirroredSum = Mathf.Abs(randomSum);
             timeUntilNextHunger = MIN_TIME_TO_HUNGER + (1f - mirroredSum) * (MAX_TIME_TO_HUNGER - MIN_TIME_TO_HUNGER);
-            timeUntilNextHunger = Random.Range(MIN_TIME_TO_HUNGER, MAX_TIME_TO_HUNGER);
+            timeUntilNextHunger -= EXPERT_MODIFIER * GameManager.Instance.ExpertStatus();
+            // timeUntilNextHunger = Random.Range(MIN_TIME_TO_HUNGER, MAX_TIME_TO_HUNGER);
 
             Shuffle(allWorms);
             foreach (DeliveryTarget worm in allWorms) {
@@ -150,11 +153,18 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
     }
 
     private void CreateWormAt(Vector2 pos) {
+        CreateWormAt(pos, true);
+    }
+
+    private void CreateWormAt(Vector2 pos, bool makeSound) {
         GameObject wormObj = Instantiate(wormPrefab);
         wormObj.transform.position = pos;
         DeliveryTarget worm = wormObj.GetComponent<DeliveryTarget>();
         allConnectableEntities.Add(worm);
         allWorms.Add(worm);
+
+        if (makeSound)
+            AudioManager.Instance.PlayWormAppearSound();
     }
 
     private void SetNextSpawnDelay() {

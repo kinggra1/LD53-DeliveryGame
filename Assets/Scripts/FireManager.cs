@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FireManager : MonoBehaviour
 {
-    private static readonly float MIN_TIME_BETWEEN_FIRES = 30f;
+    private static readonly float MIN_TIME_BETWEEN_FIRES = 20f;
     private static readonly float MAX_TIME_BETWEEN_FIRES = 40f;
+
+    private static bool showFireTooltip = true;
 
     public DeliverySquirrel mainPathFollower;
 
-    private float fireTimer = 0f;
+    private float fireTimer = 10f;
     private float nextFireTime;
 
     // Start is called before the first frame update
@@ -35,7 +37,11 @@ public class FireManager : MonoBehaviour
 
         // travel backwarrds to the path segment prior to the current segment.
         PathPiece candidatePiece = mainPathFollower.GetCurrentPath().StartNode().incomingPath;
-        candidatePiece?.SetOnFire();
+        candidatePiece?.SetOnFire(showFireTooltip);
+
+        AudioManager.Instance.PlayFireWoosh();
+
+        showFireTooltip = false;
     }
 
     private void SetNextFireTime() {

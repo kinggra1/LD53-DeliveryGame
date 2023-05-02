@@ -11,6 +11,8 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
     public GameObject foodBlobPrefab;
     public Transform foodBlobParent;
 
+    public GameObject visualSprite;
+
     private PathPiece currentPath;
     private PathConnectable currentNode;
     private float timeOnPath = 0f;
@@ -25,12 +27,14 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
     private int heldBlueFood = 0;
     private int heldYellowFood = 0;
 
+    private Vector3 startingScale;
+
     private List<FoodBlob> foodBlobs = new List<FoodBlob>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startingScale = visualSprite.transform.localScale;
     }
 
     // Update is called once per frame
@@ -46,7 +50,15 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
 
         if (currentPath != null) {
             if (currentPath.KillsPlayer(travelSpeed, timeOnPath)) {
-                GameManager.Instance.GameOver();
+                GameManager.Instance.GameOver("Burnt up in a fire!");
+            }
+
+            if (currentPath.IsLeftPath()) {
+                Vector3 facingScale = startingScale;
+                facingScale.x = startingScale.x * -1f;
+                visualSprite.transform.localScale = facingScale;
+            } else {
+                visualSprite.transform.localScale = startingScale;
             }
 
             // Move along the current path

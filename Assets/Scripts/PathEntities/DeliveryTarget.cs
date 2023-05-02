@@ -38,6 +38,9 @@ public class DeliveryTarget : PathConnectable {
 
         livingWormVisual.SetActive(true);
         deadWormVisual.SetActive(false);
+
+        livingWormVisual.transform.localScale = Vector3.zero;
+        LeanTween.scale(livingWormVisual, Vector3.one * 0.6f, 0.5f).setEaseOutBack();
     }
 
     // Update is called once per frame
@@ -63,9 +66,12 @@ public class DeliveryTarget : PathConnectable {
                 livingWormVisual.SetActive(false);
                 deadWormVisual.SetActive(true);
 
+                GameManager.Instance.AddDeadWorm();
+
             } else if (stateTimer > timeToStarving) {
                 // Very Hungry
-                this.GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.4f);
+                this.GetComponentInChildren<SpriteRenderer>().color = new Color(0.7f, 0.7f, 0.7f, 1f);
+                this.GetComponentInChildren<Animator>().speed = 0.5f;
                 thoughtBubbleSpriteRenderer.color = new Color(1f, 0f, 0f, 1f);
             } else {
                 // Standard Hungry
@@ -111,6 +117,7 @@ public class DeliveryTarget : PathConnectable {
 
         this.GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         thoughtBubbleSpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+        this.GetComponentInChildren<Animator>().speed = 1f;
 
         hungerVisualParentTransformRed.gameObject.SetActive(false);
         hungerVisualParentTransformBlue.gameObject.SetActive(false);
