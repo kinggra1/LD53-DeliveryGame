@@ -25,16 +25,17 @@ public class DeliveryTarget : PathConnectable {
     private bool isHungry = false;
     private bool isDead = false;
 
-    private float stateTimer = 0f;
+    private float stateTimer = 10f;
     private float timeToHunger = 0f;
 
-    private float timeToStarving = 20f;
-    private float timeToDead = 40f;
+    private float timeToStarving = 12f;
+    private float timeToDead = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
         SatisfyHunger();
+        stateTimer = 10f;
 
         livingWormVisual.SetActive(true);
         deadWormVisual.SetActive(false);

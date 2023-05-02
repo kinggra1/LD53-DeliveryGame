@@ -5,6 +5,7 @@ using UnityEngine;
 public class FloatAround : MonoBehaviour
 {
     public float maxTravelDistance = 0.2f;
+    public bool rotate = true;
 
     private float randomTimeOffset;
     private float xMultipler;
@@ -40,6 +41,8 @@ public class FloatAround : MonoBehaviour
                 Mathf.Sin(timer * yMultipler + randomTimeOffset * Mathf.Deg2Rad),
                 0f) * maxTravelDistance;
 
-        this.transform.localRotation = Quaternion.Euler(0f, 0f, startingRotation + timer * rotationSpeed);
+        if (rotate) {
+            this.transform.localRotation = Quaternion.Euler(0f, 0f, startingRotation + timer * rotationSpeed);
+        }
     }
 }

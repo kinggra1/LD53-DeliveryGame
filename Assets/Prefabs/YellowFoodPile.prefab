@@ -85,7 +85,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!1 &16167327272093603
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963757725923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -365,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963514148070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -465,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963554692172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -565,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963589709960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -665,6 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963595352614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -765,6 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963930903645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -865,6 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029964244910916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -965,6 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029964272972989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1065,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029964538119406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1165,6 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029964560586936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1265,6 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029962458847597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1365,6 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029962541260518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1465,6 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029962877931299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1565,6 +1578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029962715333716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1665,6 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029962740782164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1765,6 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963168837872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1865,6 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963391616842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -1965,6 +1982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963483280542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -2065,6 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963253541817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}
@@ -2165,6 +2184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!4 &8749029963262841089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 70867c3f3d5363e4f88ada90dc12cd63, type: 3}

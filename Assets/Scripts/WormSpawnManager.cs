@@ -28,10 +28,10 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
 
     private static readonly float MIN_TIME_TO_HUNGER = 8f;
     private static readonly float MAX_TIME_TO_HUNGER = 12f;
-    private static readonly float EXPERT_MODIFIER = 5f;
+    private static readonly float EXPERT_MODIFIER = 6f;
 
     private float hungryWormTimer = 0f;
-    private float timeUntilNextHunger = 0f;
+    private float timeUntilNextHunger = 1f;
     
     private List<PathConnectable> allConnectableEntities = new List<PathConnectable>();
     private List<DeliveryTarget> allWorms = new List<DeliveryTarget>();
@@ -107,11 +107,13 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
 
     private void SpawnRedFoodPile() {
         Vector2 candidateLocation = TryFindSpawnLocation();
-        if (candidateLocation != Vector2.zero) {
-            GameObject redFoodPile = Instantiate(redFoodPilePrefab);
-            redFoodPile.transform.position = candidateLocation;
-            allConnectableEntities.Add(redFoodPile.GetComponent<PathConnectable>());
+        while (candidateLocation != Vector2.zero) {
+            candidateLocation = TryFindSpawnLocation();
         }
+        
+        GameObject redFoodPile = Instantiate(redFoodPilePrefab);
+        redFoodPile.transform.position = candidateLocation;
+        allConnectableEntities.Add(redFoodPile.GetComponent<PathConnectable>());
     }
 
     private Vector2 TryFindSpawnLocation() {

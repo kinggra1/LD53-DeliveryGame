@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public float ExpertStatus() {
-        return Mathf.Min(score / 500f, 1f);
+        return Mathf.Min(score / 800f, 1f);
     }
 
     public void AddDeadWorm() {

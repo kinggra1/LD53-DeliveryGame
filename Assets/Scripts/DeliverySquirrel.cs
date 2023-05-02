@@ -223,7 +223,7 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
     }
 
     public float CurrentSpeed() {
-        return travelSpeed + 4f * GameManager.Instance.ExpertStatus();
+        return travelSpeed + 2f * GameManager.Instance.ExpertStatus();
     }
 
     public float TimeOnPathSegment() {

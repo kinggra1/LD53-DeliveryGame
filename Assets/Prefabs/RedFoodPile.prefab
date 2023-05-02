@@ -85,7 +85,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!1 &2616262065149810834
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262064933204886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065162856554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -470,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065177130044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065320231002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -670,6 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065322785524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,6 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065363381406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,6 +876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065395794996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,6 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065420654641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1070,6 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262065792537743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1170,6 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066017665058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1270,6 +1280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066184036819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1370,6 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066201467755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1470,6 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066231968844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,6 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066323437464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1670,6 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066368425524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1770,6 +1785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066451163583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1870,6 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066714223750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1970,6 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066739672198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2070,6 +2088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1
 --- !u!1001 &2616262066837389297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2170,3 +2189,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTravelDistance: 0.2
+  rotate: 1

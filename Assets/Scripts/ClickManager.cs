@@ -15,6 +15,9 @@ public class ClickManager : Singleton<ClickManager> {
     private PathPiece tempPathVisualFromMouse;
     private PathConnectable invisibleMousePlaceholder;
 
+    private Vector2 clickPos;
+    private bool holdingMouse;
+
     void Awake() {
         GameObject fakePathVisualHolderToMouse = Instantiate(pathPiecePrefab, this.transform);
         fakePathVisualHolderToMouse.name = "FakePathVisualToMouse";
@@ -41,9 +44,20 @@ public class ClickManager : Singleton<ClickManager> {
             return;
         }
 
+        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
         bool click = Input.GetMouseButtonDown(0);
+        if (click) {
+            clickPos = mousePos;
+        }
+
+        // If we release the mouse at least 2 world units away from where we clicked down, count it as a second click
+        if (holdingMouse && Input.GetMouseButtonUp(0) && Vector2.Distance(mousePos, clickPos) > 2f) {
+            click = true;
+        }
 
         if (click) {
+            holdingMouse = true;
             bool clickHandled = false;
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(cameraRay);
@@ -155,12 +169,15 @@ public class ClickManager : Singleton<ClickManager> {
 
         // Visually adjust any mouse-based path segments
         if (firstClickedNode != null || tempPathVisualFromMouse.isActiveAndEnabled) {
-            Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             invisibleMousePlaceholder.transform.position = mousePos;
             if (tempPathVisualToMouse.isActiveAndEnabled)
                 tempPathVisualToMouse.RescalePathToEnds();
             if (tempPathVisualFromMouse.isActiveAndEnabled)
                 tempPathVisualFromMouse.RescalePathToEnds();
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            holdingMouse = false;
         }
     }
 }

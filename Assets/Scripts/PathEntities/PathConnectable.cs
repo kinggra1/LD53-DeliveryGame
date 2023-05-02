@@ -20,7 +20,7 @@ public class PathConnectable : MonoBehaviour
                 // Make path unclickable
                 incomingPath.GetComponentInChildren<Collider2D>().enabled = false;
                 // Make path to remove semi-transparent
-                incomingPath.GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.2f);
+                incomingPath.GetComponentInChildren<SpriteRenderer>().color = new Color(214f/255f, 1f, 0f, 0.1f);
                 float followerSpeed = pathFollower.CurrentSpeed();
                 float timeToDeath = incomingPath.TotalPathTimeAtSpeed(followerSpeed) - pathFollower.TimeOnPathSegment();
                 LeanTween.delayedCall(timeToDeath + 0.2f, () => {
@@ -45,7 +45,7 @@ public class PathConnectable : MonoBehaviour
                 // Make path unclickable
                 outgoingPath.GetComponentInChildren<Collider2D>().enabled = false;
                 // Make path to remove semi-transparent
-                outgoingPath.GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.2f);
+                outgoingPath.GetComponentInChildren<SpriteRenderer>().color = new Color(214f / 255f, 1f, 0f, 0.1f);
                 float followerSpeed = pathFollower.CurrentSpeed();
                 float timeToDeath = outgoingPath.TotalPathTimeAtSpeed(followerSpeed) - pathFollower.TimeOnPathSegment();
                 LeanTween.delayedCall(timeToDeath + 0.2f, () => {
