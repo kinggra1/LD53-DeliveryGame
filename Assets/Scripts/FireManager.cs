@@ -6,18 +6,19 @@ public class FireManager : MonoBehaviour
 {
     private static readonly float MIN_TIME_BETWEEN_FIRES = 20f;
     private static readonly float MAX_TIME_BETWEEN_FIRES = 40f;
+    private static readonly float EXPERT_MODE_MODIFIER = 15f;
 
     private static bool showFireTooltip = true;
 
     public DeliverySquirrel mainPathFollower;
 
-    private float fireTimer = 10f;
-    private float nextFireTime;
+    private float fireTimer = 0f;
+    private float nextFireTime = 15f;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetNextFireTime();
+        // SetNextFireTime();
     }
 
     // Update is called once per frame
@@ -45,7 +46,8 @@ public class FireManager : MonoBehaviour
     }
 
     private void SetNextFireTime() {
-        nextFireTime = Random.Range(MIN_TIME_BETWEEN_FIRES, MAX_TIME_BETWEEN_FIRES);
+        nextFireTime = Random.Range(MIN_TIME_BETWEEN_FIRES, MAX_TIME_BETWEEN_FIRES)
+            - EXPERT_MODE_MODIFIER * GameManager.Instance.ExpertStatus();
         fireTimer = 0f;
     }
 }

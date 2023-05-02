@@ -49,7 +49,7 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
         timeOnPath += Time.deltaTime;
 
         if (currentPath != null) {
-            if (currentPath.KillsPlayer(travelSpeed, timeOnPath)) {
+            if (currentPath.KillsPlayer(CurrentSpeed(), timeOnPath)) {
                 GameManager.Instance.GameOver("Burnt up in a fire!");
             }
 
@@ -62,7 +62,7 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
             }
 
             // Move along the current path
-            this.transform.position = currentPath.LerpAtSpeed(travelSpeed, timeOnPath);
+            this.transform.position = currentPath.LerpAtSpeed(CurrentSpeed(), timeOnPath);
 
             if (currentPath.AtEndOfPath(this.transform.position)) {
                 currentPath.entityOnPath = null;
@@ -223,7 +223,7 @@ public class DeliverySquirrel : MonoBehaviour, IPathFollower
     }
 
     public float CurrentSpeed() {
-        return travelSpeed;
+        return travelSpeed + 4f * GameManager.Instance.ExpertStatus();
     }
 
     public float TimeOnPathSegment() {

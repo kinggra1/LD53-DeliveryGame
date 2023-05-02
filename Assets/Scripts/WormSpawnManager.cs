@@ -6,10 +6,10 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
 {
     private static readonly float MINIMUM_SPACING = 4f;
     private static readonly float MAX_SPAWN_DELAY = 60f;
-    private static readonly float MIN_SPAWN_DELAY = 25f;
+    private static readonly float MIN_SPAWN_DELAY = 30f;
     private static readonly int SPAWN_LOCATION_CANDIDATES = 10;
 
-    private static readonly float TIME_UNTIL_MULTIPLE_FOODS = 120f;
+    private static readonly float TIME_UNTIL_MULTIPLE_FOODS = 60f;
     private bool secondFoodSpawned = false;
 
     private float maxSpawnXDist = 11f;
@@ -20,18 +20,18 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
     public GameObject redFoodPilePrefab;
     public GameObject yellowFoodPilePrefab;
 
-    private float spawnNextAfter;
+    private float spawnNextAfter = 20f; // starting delay
     private float spawnTimer = 0f;
 
     private float foodPileTimer = 0f;
 
 
-    private static readonly float MIN_TIME_TO_HUNGER = 10f;
-    private static readonly float MAX_TIME_TO_HUNGER = 20f;
-    private static readonly float EXPERT_MODIFIER = 10f;
+    private static readonly float MIN_TIME_TO_HUNGER = 8f;
+    private static readonly float MAX_TIME_TO_HUNGER = 12f;
+    private static readonly float EXPERT_MODIFIER = 5f;
 
-    private float hungryWormTimer;
-    private float timeUntilNextHunger;
+    private float hungryWormTimer = 0f;
+    private float timeUntilNextHunger = 0f;
     
     private List<PathConnectable> allConnectableEntities = new List<PathConnectable>();
     private List<DeliveryTarget> allWorms = new List<DeliveryTarget>();
@@ -45,9 +45,8 @@ public class WormSpawnManager : Singleton<WormSpawnManager>
         allConnectableEntities.Add(blueFoodPile.GetComponent<PathConnectable>());
 
         CreateWormAt(new Vector2(6f, 0f), false);
-        CreateWormAt(new Vector2(2f, 4f), false);
+        CreateWormAt(new Vector2(1.8f, 4f), false);
         CreateWormAt(new Vector2(2f, -4f), false);
-        SetNextSpawnDelay();
     }
 
     // Update is called once per frame

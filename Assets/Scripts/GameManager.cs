@@ -43,7 +43,7 @@ public class GameManager : Singleton<GameManager>
 
     public void AddDeadWorm() {
         deadWorms++;
-        if (deadWorms > 5) {
+        if (deadWorms >= 5) {
             GameOver("Too many worms died :(");
         }
     }

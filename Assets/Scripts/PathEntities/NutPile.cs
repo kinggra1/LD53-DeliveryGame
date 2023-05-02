@@ -11,7 +11,7 @@ public class NutPile : PathConnectable
     // Start is called before the first frame update
     void Start()
     {
-        if (Time.time < 10f) {
+        if (Time.timeSinceLevelLoad < 10f) {
             deliverySquirrel = FindObjectOfType<DeliverySquirrel>();
             deliverySquirrel.transform.position = this.transform.position;
             deliverySquirrel.SetCurrentNode(this);

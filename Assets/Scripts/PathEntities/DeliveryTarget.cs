@@ -26,7 +26,7 @@ public class DeliveryTarget : PathConnectable {
     private bool isDead = false;
 
     private float stateTimer = 0f;
-    private float timeToHunger = 10f;
+    private float timeToHunger = 0f;
 
     private float timeToStarving = 20f;
     private float timeToDead = 40f;
@@ -80,7 +80,7 @@ public class DeliveryTarget : PathConnectable {
     }
 
     public bool CanBecomeHungry() {
-        return !isHungry && !isDead;
+        return !isHungry && !isDead && stateTimer > 7f; // at least 7 seconds since we became satisfied.
     }
     public void BecomeHungry() {
         isHungry = true;
